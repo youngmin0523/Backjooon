@@ -6,6 +6,7 @@ public class Main {
 	
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
 		int N = Integer.parseInt(br.readLine());
 		arr = new int[N+1];
 		StringTokenizer st = new StringTokenizer(br.readLine());
@@ -40,10 +41,11 @@ public class Main {
 			
 		}
 		for(int i = 1; i <= N; i++) {
-			System.out.print(arr[i] + " ");
+			sb.append(arr[i]).append(" ");
 			if(i%20 == 0) {
-				System.out.println();
+				sb.append("\n");
 			}
 		}
+		System.out.println(sb.toString());
 	}
 }
