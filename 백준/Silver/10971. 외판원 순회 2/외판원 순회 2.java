@@ -21,19 +21,20 @@ class Main {
         
         min = Integer.MAX_VALUE;
         for(start = 0; start < N; start++) {
-        	dfs(1, start, 0, (1<<start));
+        	dfs(start, 0, (1<<start));
         }
         System.out.println(min);
     }
-    static void dfs(int cnt, int city, int cost, int visited) {
-    	if(cnt == N && table[city][start] != 0) {
+    static void dfs(int city, int cost, int visited) {
+    	if(cost >= min) return;
+    	if(visited == (1<<N)-1 && table[city][start] != 0) {
     		min = Math.min(min, cost+table[city][start]);
     		return;
     	}
     	
     	for(int i = 0; i < N; i++) {
     		if((visited & (1<<i)) == 0 && table[city][i] != 0) {
-    			dfs(cnt+1, i, cost+table[city][i], visited | (1<<i));
+    			dfs(i, cost+table[city][i], visited | (1<<i));
     		}
     	}
     }
