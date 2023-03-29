@@ -4,7 +4,6 @@ import java.util.*;
 class Main {
 	
 	static int N, table[][], start, min;
-	static boolean visited[];
 	
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -21,25 +20,20 @@ class Main {
         }
         
         min = Integer.MAX_VALUE;
-        visited = new boolean[N];
         for(start = 0; start < N; start++) {
-        	visited[start] = true;
-        	dfs(1, start, 0);
-        	visited[start] = false;
+        	dfs(1, start, 0, (1<<start));
         }
         System.out.println(min);
     }
-    static void dfs(int cnt, int city, int cost) {
+    static void dfs(int cnt, int city, int cost, int visited) {
     	if(cnt == N && table[city][start] != 0) {
     		min = Math.min(min, cost+table[city][start]);
     		return;
     	}
     	
     	for(int i = 0; i < N; i++) {
-    		if(!visited[i] && table[city][i] != 0) {
-    			visited[i] = true;
-    			dfs(cnt+1, i, cost+table[city][i]);
-    			visited[i] = false;
+    		if((visited & (1<<i)) == 0 && table[city][i] != 0) {
+    			dfs(cnt+1, i, cost+table[city][i], visited | (1<<i));
     		}
     	}
     }
