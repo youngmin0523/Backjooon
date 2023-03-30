@@ -38,21 +38,21 @@ class Main {
     	}
     	
     	int[] curr = list.get(cnt);
-    	boolean visited[] = new boolean[10];
+    	int visited = 0;
     	for(int i = 0; i < 9; i++) {
-    		visited[map[curr[0]][i]] = true;
-    		visited[map[i][curr[1]]] = true;
+    		visited |= (1<<map[curr[0]][i]);
+    		visited |= (1<<map[i][curr[1]]);
     	}
     	int r = curr[0]/3*3;
     	int c = curr[1]/3*3;
     	for(int i = 0; i < 3; i++) {
     		for(int j = 0; j < 3; j++) {
-    			visited[map[r+i][c+j]] = true;
+    			visited |= (1<<map[r+i][c+j]);
     		}
     	}
     	
     	for(int i = 1; i <= 9; i++) {
-    		if(!visited[i]) {
+    		if((visited&(1<<i)) == 0) {
     			map[curr[0]][curr[1]] = i;
     			boolean flag = solve(cnt+1);
     			if(flag) {
