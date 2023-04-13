@@ -9,7 +9,7 @@ public class Main {
         int L = Integer.parseInt(br.readLine());
         String str = br.readLine();
         
-        int res = 0, r = 1;
+        long res = 0, r = 1;
         int MOD = 1234567891;
         for(int i = 0; i < str.length(); i++) {
         	res += (str.charAt(i)-'a'+1)*r%MOD;
