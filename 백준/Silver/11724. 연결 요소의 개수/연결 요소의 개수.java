@@ -22,11 +22,29 @@ public class Main {
 		}
 		for(int i = 1; i <= N; i++) {
 			if(!visited[i]) {
-				dfs(i);
+				bfs(i);
 				cnt++;
 			}
 		}
 		System.out.println(cnt);
+	}
+	static void bfs(int start) {
+		Queue<Integer> q = new ArrayDeque<>();
+		q.offer(start);
+		visited[start] = true;
+		
+		int curr;
+		while(!q.isEmpty()) {
+			curr = q.poll();
+			for(int i = 1; i <= N; i++) {
+				if(matrix[curr][i] && !visited[i]) {
+					q.offer(i);
+					visited[i] = true;
+				}
+			}
+		}
+		
+		
 	}
 	static void dfs(int index) {
 		visited[index] = true;
