@@ -6,6 +6,7 @@ public class Main {
 	
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		int N = Integer.parseInt(st.nextToken());
 		int M = Integer.parseInt(st.nextToken());
@@ -16,7 +17,8 @@ public class Main {
 			map.put(st.nextToken(), st.nextToken());
 		}
 		for(int i = 0; i < M; i++) {
-			System.out.println(map.get(br.readLine()));
+			sb.append(map.get(br.readLine())).append('\n');
 		}
+		System.out.println(sb.toString());
 	}
 }
