@@ -21,6 +21,7 @@ public class Main {
 	
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
 		N = Integer.parseInt(br.readLine());
 		map = new int[N][N];
 		visited = new boolean[N][N];
@@ -41,11 +42,12 @@ public class Main {
 				}
 			}
 		}
-		System.out.println(cnt);
+		sb.append(cnt).append('\n');
 		Collections.sort(list);
 		for(int it : list) {
-			System.out.println(it);
+			sb.append(it).append('\n');
 		}
+		System.out.println(sb.toString());
 	}
 	static int bfs(int r, int c) {
 		Queue<Pos> q = new ArrayDeque<>();
